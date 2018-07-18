@@ -33,23 +33,18 @@ AR        = ar rv
 PYTHON ?= python
 
 # your optimization flag
-OPTFLAG = -O4 -ffast-math -lgsl -lgslcblas -lfftw3 -lm #-march=native
+OPTFLAG = -O4 -ffast-math #-march=native
 #OPTFLAG = -Ofast -ffast-math #-march=native
 #OPTFLAG = -fast
 
 # your openmp flag (comment for compiling without openmp)
-OMPFLAG   = -fopenmp
+#OMPFLAG   = -fopenmp
 #OMPFLAG   = -mp -mp=nonuma -mp=allcores -g
-#OMPFLAG   = -openmp
-
+OMPFLAG   = -openmp
 
 # all other compilation flags
 CCFLAG = -g -fPIC
 LDFLAG = -g -fPIC
-
-# C99 Mode
-CCFLAG = -std=gnu99
-
 
 # leave blank to compile without HyRec, or put path to HyRec directory
 # (with no slash at the end: e.g. hyrec or ../hyrec)
@@ -77,7 +72,6 @@ INCLUDES += -I../hyrec
 EXTERNAL += hyrectools.o helium.o hydrogen.o history.o
 endif
 
-
 #===============================================================================
 # GSL lib
 #===============================================================================
@@ -87,14 +81,12 @@ CCFLAG += -lgsl -lgslcblas -lm
 INCLUDES += -I/usr/local/include
 INCLUDES += -I/usr/include
 
-
 %.o:  %.c .base
 	cd $(WRKDIR);$(CC) $(OPTFLAG) $(OMPFLAG) $(CCFLAG) $(INCLUDES) -c ../$< -o $*.o
 
 TOOLS = growTable.o dei_rkck.o sparse.o evolver_rkck.o  evolver_ndf15.o arrays.o parser.o quadrature.o hyperspherical.o common.o
 
-SOURCE = input.o background.o thermodynamics.o perturbations.o primordial.o nonlinear.o nonlinear_pt.o transfer.o spectra.o lensing.o
-
+SOURCE = input.o background.o thermodynamics.o perturbations.o primordial.o nonlinear.o transfer.o spectra.o lensing.o
 
 INPUT = input.o
 
@@ -113,8 +105,6 @@ PRIMORDIAL = primordial.o
 SPECTRA = spectra.o
 
 NONLINEAR = nonlinear.o
-
-NONLINEAR_PT = nonlinear_pt.o
 
 LENSING = lensing.o
 
@@ -162,7 +152,6 @@ libclass.a: $(TOOLS) $(SOURCE) $(EXTERNAL)
 
 class: $(TOOLS) $(SOURCE) $(EXTERNAL) $(OUTPUT) $(CLASS)
 	$(CC) $(OPTFLAG) $(OMPFLAG) $(LDFLAG) -o class $(addprefix build/,$(notdir $^)) -lm -lgsl -lgslcblas
-
 
 test_sigma: $(TOOLS) $(SOURCE) $(EXTERNAL) $(OUTPUT) $(TEST_SIGMA)
 	$(CC) $(OPTFLAG) $(OMPFLAG) $(LDFLAG) -o test_sigma $(addprefix build/,$(notdir $^)) -lm
