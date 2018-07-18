@@ -273,10 +273,7 @@ extern "C" {
                     struct background * pba,
                     struct thermo * pth,
                     struct perturbs * ppt,
-<<<<<<< transfer.h
                     struct nonlinear_pt * pnlpt,
-=======
->>>>>>> transfer_idm.h
                     struct nonlinear * pnl,
                     struct transfers * ptr
                     );
@@ -296,10 +293,7 @@ extern "C" {
 
   int transfer_perturbation_copy_sources_and_nl_corrections(
                                                             struct perturbs * ppt,
-<<<<<<< transfer.h
                                                             struct nonlinear_pt * pnlpt,
-=======
->>>>>>> transfer_idm.h
                                                             struct nonlinear * pnl,
                                                             struct transfers * ptr,
                                                             double *** sources
@@ -314,10 +308,7 @@ extern "C" {
 
   int transfer_perturbation_sources_free(
                                          struct perturbs * ppt,
-<<<<<<< transfer.h
                                          struct nonlinear_pt * pnlpt,
-=======
->>>>>>> transfer_idm.h
                                          struct nonlinear * pnl,
                                          struct transfers * ptr,
                                          double *** sources

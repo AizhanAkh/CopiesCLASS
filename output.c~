@@ -973,6 +973,10 @@ int output_pk_nl(
     class_alloc(pk_tot,
                 psp->ln_k_size*sizeof(double),
                 pop->error_message);
+<<<<<<< output.c
+      
+=======
+>>>>>>> output_idm.c
 
     /** - third, compute P(k) for each k (if several ic's, compute it for each ic and compute also the total); if z_pk = 0, this is done by directly reading inside the pre-computed table; if not, this is done by interpolating the table at the correct value of tau. */
 
@@ -997,7 +1001,11 @@ int output_pk_nl(
                                     pk_tot),
                  psp->error_message,
                  pop->error_message);
-
+<<<<<<< output.c
+        
+        
+=======
+>>>>>>> output_idm.c
     }
 
     /** - fourth, write in files */
@@ -1024,7 +1032,7 @@ int output_pk_nl(
 }
 
 
-
+<<<<<<< output.c
 // Misha: my brand new output is here !!!
 
 int output_pk_nl_pt(
@@ -1236,6 +1244,8 @@ int output_pk_nl_pt(
 
 
 
+=======
+>>>>>>> output_idm.c
 /**
  * This routines writes the output in files for matter transfer functions \f$ T_i(k)\f$'s.
  *
@@ -1900,6 +1910,7 @@ int output_open_pk_file(
   return _SUCCESS_;
 }
 
+<<<<<<< output.c
 
 /**
  * This routine opens one file where some  NONLINEAR P(k)'s will be written, and writes
@@ -1956,6 +1967,9 @@ int output_open_pk_nlpt_file(
 
 
 
+
+=======
+>>>>>>> output_idm.c
 /**
  * This routine writes one line with k and P(k)
  *
@@ -1965,6 +1979,10 @@ int output_open_pk_nlpt_file(
  * @return the error status
  */
 
+<<<<<<< output.c
+
+=======
+>>>>>>> output_idm.c
 int output_one_line_of_pk(
                           FILE * pkfile,
                           double one_k,
@@ -1979,6 +1997,7 @@ int output_one_line_of_pk(
   return _SUCCESS_;
 
 }
+<<<<<<< output.c
 
 /**
  * This routine writes # lines with k and P(k), and bias tracers' loop integrals
@@ -2020,3 +2039,5 @@ int output_one_line_many_columns_of_pk(
     return _SUCCESS_;
     
 }
+=======
+>>>>>>> output_idm.c
